@@ -1,0 +1,26 @@
+entity_bundle: research_output
+reference_field: field_research_output_type
+reference_target: name
+purge_if_absent: true
+alterations:
+  'Conference Paper':
+    citation_issn: '[node:field_issn]'
+    citation_isbn: '[node:field_isbn]'
+    citation_volume: '[node:field_volume]'
+    citation_issue: '[node:field_issue]'
+    citation_firstpage: '[node:field_start_page]'
+    citation_lastpage: '[node:field_end_page]'
+  'Journal article':
+    citation_issn: '[node:field_issn]'
+    citation_isbn: '[node:field_isbn]'
+    citation_volume: '[node:field_volume]'
+    citation_issue: '[node:field_issue]'
+    citation_firstpage: '[node:field_start_page]'
+    citation_lastpage: '[node:field_end_page]'
+    citation_journal_title: '[node:field_source_publication]'
+  'Thesis':
+    citation_dissertation_institution: '[node:field_publisher]'
+  'Report':
+    citation_technical_report_institution: '[node:field_publisher]'
+  'Dissertation':
+    citation_dissertation_institution: '[node:field_publisher]'

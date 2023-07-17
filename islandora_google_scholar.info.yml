@@ -1,0 +1,7 @@
+name: "Islandora Google Scholar"
+description: "Implementation of metatag_google_scholar with special Islandora functionalty"
+type: module
+package: Islandora
+core_version_requirement: ^9
+dependencies:
+  - metatag:metatag
