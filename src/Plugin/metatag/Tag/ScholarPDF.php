@@ -2,10 +2,10 @@
 
 namespace Drupal\islandora_google_scholar\Plugin\metatag\Tag;
 
-use Drupal\metatag\Plugin\metatag\Tag\MetaNameBase;
-use Drupal\node\NodeInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
+use Drupal\metatag\Plugin\metatag\Tag\MetaNameBase;
+use Drupal\node\NodeInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
@@ -36,9 +36,9 @@ class ScholarPDF extends MetaNameBase implements ContainerFactoryPluginInterface
   /**
    * The canonical URL for the first PDF on the entity this tag refers to.
    *
-   * @see ScholarPDF::getFirstPdfUrl()
-   *
    * @var string|null
+   *
+   * @see ScholarPDF::getFirstPdfUrl()
    */
   protected $firstPDFUrl = NULL;
 
@@ -47,9 +47,9 @@ class ScholarPDF extends MetaNameBase implements ContainerFactoryPluginInterface
    *
    * If we are not in the context of a node, this will be FALSE.
    *
-   * @see ScholarPDF::getNode()
-   *
    * @var Drupal\node\NodeInterface|bool
+   *
+   * @see ScholarPDF::getNode()
    */
   protected $node = NULL;
 

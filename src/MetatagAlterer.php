@@ -2,9 +2,9 @@
 
 namespace Drupal\islandora_google_scholar;
 
-use Drupal\node\NodeInterface;
 use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
+use Drupal\node\NodeInterface;
 
 /**
  * Alteration service for type-filtered metatags.
