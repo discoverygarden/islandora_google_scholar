@@ -146,19 +146,16 @@ class ScholarPDF extends MetaNameBase implements ContainerFactoryPluginInterface
         return $this->firstPDFUrl;
       }
       else {
-        $research_output_terms = $this->entityTypeManager
-          ->getStorage('taxonomy_term')
-          ->getQuery()
-          ->condition('field_external_uri', 'http://pcdm.org/use#ResearchOutput')
-          ->execute();
-        $term = reset($research_output_terms);
-        if ($term) {
+//        $research_output_terms = $this->entityTypeManager
+//          ->getStorage('taxonomy_term')
+//          ->getQuery()
+//          ->condition('field_external_uri', 'http://pcdm.org/use#ResearchOutput')
+//          ->execute();
+//        $term = reset($research_output_terms);
           $research_output_media = (array) $this->entityTypeManager
             ->getStorage('media')
             ->getQuery()
             ->condition('field_media_of', $node->id())
-            ->condition('field_media_use', $term)
-            ->sort('field_weight')
             ->execute();
           foreach ($this->entityTypeManager->getStorage('media')->loadMultiple($research_output_media) as $media) {
             if ($media) {
@@ -175,7 +172,7 @@ class ScholarPDF extends MetaNameBase implements ContainerFactoryPluginInterface
               }
             }
           }
-        }
+
       }
     }
     return $this->firstPDFUrl;

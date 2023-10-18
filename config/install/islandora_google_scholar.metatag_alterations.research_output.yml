@@ -1,8 +1,15 @@
-entity_bundle: research_output
-reference_field: field_research_output_type
+entity_bundle: islandora_object
+reference_field: field_model
 reference_target: name
-purge_if_absent: true
+purge_if_absent: false
 alterations:
+  'Publication Issue':
+    citation_issn: '[node:field_issn]'
+    citation_isbn: '[node:field_isbn]'
+    citation_volume: '[node:field_volume]'
+    citation_issue: '[node:field_issue]'
+    citation_firstpage: '[node:field_start_page]'
+    citation_lastpage: '[node:field_end_page]'
   'Conference Paper':
     citation_issn: '[node:field_issn]'
     citation_isbn: '[node:field_isbn]'

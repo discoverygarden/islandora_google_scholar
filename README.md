@@ -51,14 +51,7 @@ to get you started.
 
 The Islandora Google Scholar metatag group includes, at present, a checkbox
 allowing you to use the 'first attached PDF' to a node as the
-`citation_pdf_url` metatag. If the first attached PDF checkbox is checked off,
-a `citation_pdf_url` metatag will be added to the metatag list under the
-following conditions:
-
-* There is a 'Media of' that node with the 'Research Output' Media Use
-* That media implements `field_weight` and is ordered at the top
-* That media has an attached file with the `application/pdf` mimetype
-* The file is accessible by the current user
+`citation_pdf_url` metatag.
 
 ## Troubleshooting/Issues
 
