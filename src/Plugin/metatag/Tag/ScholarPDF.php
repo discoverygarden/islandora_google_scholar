@@ -146,32 +146,26 @@ class ScholarPDF extends MetaNameBase implements ContainerFactoryPluginInterface
         return $this->firstPDFUrl;
       }
       else {
-//        $research_output_terms = $this->entityTypeManager
-//          ->getStorage('taxonomy_term')
-//          ->getQuery()
-//          ->condition('field_external_uri', 'http://pcdm.org/use#ResearchOutput')
-//          ->execute();
-//        $term = reset($research_output_terms);
-          $research_output_media = (array) $this->entityTypeManager
-            ->getStorage('media')
-            ->getQuery()
-            ->condition('field_media_of', $node->id())
-            ->execute();
-          foreach ($this->entityTypeManager->getStorage('media')->loadMultiple($research_output_media) as $media) {
-            if ($media) {
-              $file = $this->entityTypeManager
-                ->getStorage('file')
-                ->load($media->getSource()->getSourceFieldValue($media));
-              if ($file && $file->getMimeType() == 'application/pdf') {
-                // Only attach if viewable, but this should still be the end of
-                // the line.
-                if ($file->access('view')) {
-                  $this->firstPDFUrl = $file->createFileUrl(FALSE);
-                }
-                return $this->firstPDFUrl;
+        $research_output_media = (array) $this->entityTypeManager
+          ->getStorage('media')
+          ->getQuery()
+          ->condition('field_media_of', $node->id())
+          ->execute();
+        foreach ($this->entityTypeManager->getStorage('media')->loadMultiple($research_output_media) as $media) {
+          if ($media) {
+            $file = $this->entityTypeManager
+              ->getStorage('file')
+              ->load($media->getSource()->getSourceFieldValue($media));
+            if ($file && $file->getMimeType() == 'application/pdf') {
+              // Only attach if viewable, but this should still be the end of
+              // the line.
+              if ($file->access('view')) {
+                $this->firstPDFUrl = $file->createFileUrl(FALSE);
               }
+              return $this->firstPDFUrl;
             }
           }
+        }
 
       }
     }
