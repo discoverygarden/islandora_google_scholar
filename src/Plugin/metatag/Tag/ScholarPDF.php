@@ -24,7 +24,8 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  *   long = FALSE,
  * )
  */
-class ScholarPDF extends MetaNameBase implements ContainerFactoryPluginInterface {
+class ScholarPDF extends MetaNameBase implements ContainerFactoryPluginInterface
+{
 
   /**
    * Entity type manager.
@@ -65,7 +66,8 @@ class ScholarPDF extends MetaNameBase implements ContainerFactoryPluginInterface
    * @param Drupal\Core\Entity\EntityTypeManagerInterface $entity_type_manager
    *   An entity type manager.
    */
-  public function __construct(array $configuration, $plugin_id, array $plugin_definition, EntityTypeManagerInterface $entity_type_manager) {
+  public function __construct(array $configuration, $plugin_id, array $plugin_definition, EntityTypeManagerInterface $entity_type_manager)
+  {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
     $this->entityTypeManager = $entity_type_manager;
     $this->getNode();
@@ -75,7 +77,8 @@ class ScholarPDF extends MetaNameBase implements ContainerFactoryPluginInterface
   /**
    * {@inheritdoc}
    */
-  public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
+  public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition)
+  {
     return new static(
       $configuration,
       $plugin_id,
@@ -86,7 +89,8 @@ class ScholarPDF extends MetaNameBase implements ContainerFactoryPluginInterface
   /**
    * {@inheritdoc}
    */
-  public function form(array $element = []) {
+  public function form(array $element = [])
+  {
     return [
       '#type' => 'checkbox',
       '#title' => $this->label(),
@@ -98,7 +102,8 @@ class ScholarPDF extends MetaNameBase implements ContainerFactoryPluginInterface
   /**
    * {@inheritdoc}
    */
-  public function value() {
+  public function value()
+  {
     // If we are in the context of a node, we want the first PDF URL. Otherwise,
     // we want the regular value.
     if (!$this->getNode() instanceof NodeInterface) {
@@ -114,7 +119,8 @@ class ScholarPDF extends MetaNameBase implements ContainerFactoryPluginInterface
    *   The node that this tag applies to, or FALSE if we are not in the context
    *   of a node.
    */
-  public function getNode() {
+  public function getNode()
+  {
     if (is_null($this->node)) {
       $this->node = $this->request->attributes->get('node');
       if (!is_null($this->node) && !$this->node instanceof NodeInterface) {
@@ -137,41 +143,35 @@ class ScholarPDF extends MetaNameBase implements ContainerFactoryPluginInterface
    *   node from the request. If no such thing exists, an empty string will be
    *   returned.
    */
-  public function getFirstPdfUrl() {
+  public function getFirstPdfUrl()
+  {
     if (is_null($this->firstPDFUrl)) {
       $this->firstPDFUrl = '';
       $node = $this->getNode();
       // Early optimization.
       if (!$node instanceof NodeInterface) {
         return $this->firstPDFUrl;
-      }
-      else {
-//        $research_output_terms = $this->entityTypeManager
-//          ->getStorage('taxonomy_term')
-//          ->getQuery()
-//          ->condition('field_external_uri', 'http://pcdm.org/use#ResearchOutput')
-//          ->execute();
-//        $term = reset($research_output_terms);
-          $research_output_media = (array) $this->entityTypeManager
-            ->getStorage('media')
-            ->getQuery()
-            ->condition('field_media_of', $node->id())
-            ->execute();
-          foreach ($this->entityTypeManager->getStorage('media')->loadMultiple($research_output_media) as $media) {
-            if ($media) {
-              $file = $this->entityTypeManager
-                ->getStorage('file')
-                ->load($media->getSource()->getSourceFieldValue($media));
-              if ($file && $file->getMimeType() == 'application/pdf') {
-                // Only attach if viewable, but this should still be the end of
-                // the line.
-                if ($file->access('view')) {
-                  $this->firstPDFUrl = $file->createFileUrl(FALSE);
-                }
-                return $this->firstPDFUrl;
+      } else {
+        $research_output_media = (array)$this->entityTypeManager
+          ->getStorage('media')
+          ->getQuery()
+          ->condition('field_media_of', $node->id())
+          ->execute();
+        foreach ($this->entityTypeManager->getStorage('media')->loadMultiple($research_output_media) as $media) {
+          if ($media) {
+            $file = $this->entityTypeManager
+              ->getStorage('file')
+              ->load($media->getSource()->getSourceFieldValue($media));
+            if ($file && $file->getMimeType() == 'application/pdf') {
+              // Only attach if viewable, but this should still be the end of
+              // the line.
+              if ($file->access('view')) {
+                $this->firstPDFUrl = $file->createFileUrl(FALSE);
               }
+              return $this->firstPDFUrl;
             }
           }
+        }
 
       }
     }
