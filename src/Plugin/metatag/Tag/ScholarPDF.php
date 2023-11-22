@@ -146,7 +146,7 @@ class ScholarPDF extends MetaNameBase implements ContainerFactoryPluginInterface
         return $this->firstPDFUrl;
       }
       else {
-        $research_output_media = (array)$this->entityTypeManager
+        $research_output_media = (array) $this->entityTypeManager
           ->getStorage('media')
           ->getQuery()
           ->condition('field_media_of', $node->id())
