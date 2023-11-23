@@ -1,0 +1,4 @@
+services:
+  islandora_google_scholar.metatag_alterer:
+    class: Drupal\islandora_google_scholar\MetatagAlterer
+    arguments: ['@config.factory', '@entity_type.manager']

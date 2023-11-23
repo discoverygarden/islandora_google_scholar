@@ -1,0 +1,28 @@
+islandora_google_scholar.metatag_alterations.*:
+  type: config_object
+  label: 'Metatag alterations'
+  mapping:
+    entity_bundle:
+      type: string
+      label: 'The node bundle this alteration should apply to.'
+      required: true
+    reference_field:
+      type: string
+      label: 'The reference field on this entity to search for a referenced type in.'
+      required: true
+    reference_target:
+      type: string
+      label: 'The target field on the entity to grab the referenced type from for use in the mapping below.'
+      required: true
+    purge_if_absent:
+      type: boolean
+      label: 'Alter out citation-prefixed metatags if the type is not in the alterations list.'
+    alterations:
+      type: sequence
+      label: 'A list of types keyed on potential values of the referenced field, mapped to a list of of metatags to alterations that should be made.'
+      sequence:
+        type: sequence
+        label: 'The alterations to be made, keyed by the metatag to alter, the values being the alteration to make. New metatags can be added in this way.'
+        sequence:
+          type: string
+          label: 'The alteration to make for this metatag. Apply an empty string here to remove the metatag during alteration.'

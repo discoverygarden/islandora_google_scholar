@@ -1,0 +1,3 @@
+metatag.metatag_tag.citation_first_attached_research_output:
+  type: boolean
+  label: 'First Attached PDF URL'
