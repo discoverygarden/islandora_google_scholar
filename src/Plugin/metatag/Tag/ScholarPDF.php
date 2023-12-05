@@ -115,7 +115,7 @@ class ScholarPDF extends MetaNameBase implements ContainerFactoryPluginInterface
    *   The node that this tag applies to, or FALSE if we are not in the context
    *   of a node.
    */
-  public function getNode(): NodeInterface|NodeInterface|bool {
+  public function getNode(): NodeInterface|bool {
     if (is_null($this->node)) {
       $this->node = $this->request->attributes->get('node');
       if (!is_null($this->node) && !$this->node instanceof NodeInterface) {
