@@ -86,19 +86,20 @@ class ScholarPDF extends MetaNameBase implements ContainerFactoryPluginInterface
   /**
    * {@inheritdoc}
    */
-  public function form(array $element = []) {
+  public function form(array $element = []): array {
     return [
       '#type' => 'checkbox',
       '#title' => $this->label(),
       '#default_value' => $this->value,
       '#description' => $this->description(),
     ];
+
   }
 
   /**
    * {@inheritdoc}
    */
-  public function value() {
+  public function value(): string|array {
     // If we are in the context of a node, we want the first PDF URL. Otherwise,
     // we want the regular value.
     if (!$this->getNode() instanceof NodeInterface) {
@@ -114,7 +115,7 @@ class ScholarPDF extends MetaNameBase implements ContainerFactoryPluginInterface
    *   The node that this tag applies to, or FALSE if we are not in the context
    *   of a node.
    */
-  public function getNode() {
+  public function getNode(): NodeInterface|bool {
     if (is_null($this->node)) {
       $this->node = $this->request->attributes->get('node');
       if (!is_null($this->node) && !$this->node instanceof NodeInterface) {
@@ -137,7 +138,7 @@ class ScholarPDF extends MetaNameBase implements ContainerFactoryPluginInterface
    *   node from the request. If no such thing exists, an empty string will be
    *   returned.
    */
-  public function getFirstPdfUrl() {
+  public function getFirstPdfUrl(): ?string {
     if (is_null($this->firstPDFUrl)) {
       $this->firstPDFUrl = '';
       $node = $this->getNode();
@@ -149,6 +150,7 @@ class ScholarPDF extends MetaNameBase implements ContainerFactoryPluginInterface
         $research_output_media = (array) $this->entityTypeManager
           ->getStorage('media')
           ->getQuery()
+          ->accessCheck(TRUE)
           ->condition('field_media_of', $node->id())
           ->execute();
         foreach ($this->entityTypeManager->getStorage('media')->loadMultiple($research_output_media) as $media) {
