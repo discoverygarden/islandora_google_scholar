@@ -86,7 +86,7 @@ class ScholarPDF extends MetaNameBase implements ContainerFactoryPluginInterface
   /**
    * {@inheritdoc}
    */
-  public function form(array $element = []): array  {
+  public function form(array $element = []): array {
     return [
       '#type' => 'checkbox',
       '#title' => $this->label(),
@@ -115,7 +115,7 @@ class ScholarPDF extends MetaNameBase implements ContainerFactoryPluginInterface
    *   The node that this tag applies to, or FALSE if we are not in the context
    *   of a node.
    */
-  public function getNode(): Drupal\node\NodeInterface|NodeInterface|bool {
+  public function getNode(): NodeInterface|NodeInterface|bool {
     if (is_null($this->node)) {
       $this->node = $this->request->attributes->get('node');
       if (!is_null($this->node) && !$this->node instanceof NodeInterface) {
