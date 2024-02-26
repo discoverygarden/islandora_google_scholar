@@ -3,7 +3,9 @@
     "type": "drupal-module",
     "license": "GPL-3.0-or-later",
     "require": {
-        "islandora/islandora": "^2"
+        "islandora/islandora": "^2",
+        "drupal/metatag": "^2.0",
+        "drupal/metatag_google_scholar": "^1.1"
     },
     "require-dev": {
         "drupal/test_support": "^1"

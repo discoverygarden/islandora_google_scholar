@@ -1,0 +1,18 @@
+<?php
+
+/**
+ * @file
+ * Hook implementations.
+ */
+
+use Drupal\node\NodeInterface;
+
+/**
+ * Implements hook_metatags_alter().
+ */
+function islandora_google_scholar_metatags_alter(array &$metatags, array &$context) {
+  if ($context['entity'] instanceof NodeInterface) {
+    $alter_service = \Drupal::service('islandora_google_scholar.metatag_alterer');
+    $alter_service->alter($metatags, $context['entity']);
+  }
+}
