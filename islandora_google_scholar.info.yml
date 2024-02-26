@@ -6,3 +6,4 @@ core_version_requirement: ^9 || ^10
 dependencies:
   - metatag:metatag
   - metatag_google_scholar:metatag_google_scholar
+  - islandora:islandora
