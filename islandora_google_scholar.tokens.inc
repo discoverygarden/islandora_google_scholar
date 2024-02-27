@@ -14,17 +14,23 @@ use Drupal\taxonomy\Entity\Term;
  * Implements hook_token_info().
  */
 function islandora_google_scholar_token_info() {
-  $node['publication_date'] = [
-    'name' => t("Publication Date"),
+  $type = [
+    'name' => t('Islandora Tokens'),
+    'description' => t('Tokens for Islandora objects.'),
+  ];
+
+  $node['gs_publication_date'] = [
+    'name' => t("GS Publication Date"),
     'description' => t('Publication Date for Google Scholar'),
   ];
 
-  $node['author'] = [
-    'name' => t("Author"),
+  $node['gs_author'] = [
+    'name' => t("GS Author"),
     'description' => t('Author for Google Scholar'),
   ];
 
   return [
+    'types' => ['islandoratokens' => $type],
     'tokens' => ['islandoratokens' => $node],
   ];
 }
@@ -37,11 +43,11 @@ function islandora_google_scholar_tokens($type, $tokens, array $data, array $opt
   if ($type == 'islandoratokens' && !empty($data['node'])) {
     foreach ($tokens as $name => $original) {
       switch ($name) {
-        case 'publication_date':
-          $replacements[$original] = islandora_google_scholar_publication_date($data['node']);
+        case 'gs_publication_date':
+          $replacements[$original] = islandora_google_scholar_publication_date($data['node'], $original);
           break;
 
-        case 'author':
+        case 'gs_author':
           $replacements[$original] = islandora_google_scholar_author($data['node']);
           break;
       }
@@ -61,12 +67,12 @@ function islandora_google_scholar_tokens($type, $tokens, array $data, array $opt
  * @return string
  *   Date.
  */
-function islandora_google_scholar_publication_date($node) {
+function islandora_google_scholar_publication_date($node, $original) {
   if (!empty($node->field_edtf_date_issued) && !$node->field_edtf_date_issued->isEmpty()) {
-    return $node->field_edtf_date_issued->getValue()[0]['value'];
+    return controlled_access_terms_normalize_date_format($node, 'field_edtf_date_issued', $original);
   }
   else if(!empty($node->field_edtf_date_created) && !$node->field_edtf_date_created->isEmpty()) {
-    return $node->field_edtf_date_created->getValue()[0]['value'];
+    return controlled_access_terms_normalize_date_format($node, 'field_edtf_date_created', $original);
   }
 }
 
@@ -114,4 +120,3 @@ function process_field_for_authors($field, $authors) {
 
   return $authors;
 }
-
