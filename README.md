@@ -9,6 +9,7 @@ Metatag additions and modifications for institutional repository content to prov
 This module requires the following modules/libraries:
 
 * [Islandora](https://github.com/Islandora/islandora)
+* [Controlled Access Terms](https://github.com/Islandora/controlled_access_terms)
 * [Metatag](https://www.drupal.org/project/metatag)
 
 It is expected that [Metatag Google Scholar](https://www.drupal.org/project/metatag_google_scholar) will be installed in order to make use of the base citation-prefixed metatags, but it is not a strict requirement of the module.

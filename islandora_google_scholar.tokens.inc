@@ -82,8 +82,11 @@ function islandora_google_scholar_publication_date($node, $original) {
  * Retrieves authors from multiple fields and returns a
  * comma-separated list of unique authors.
  *
- * @param object $node The node object containing the fields.
- * @return string The comma-separated list of unique authors.
+ * @param object $node 
+ *   The node object containing the fields.
+ *
+ * @return string 
+ *   The comma-separated list of unique authors.
  */
 function islandora_google_scholar_author($node) {
   $authors = [];
@@ -100,11 +103,15 @@ function islandora_google_scholar_author($node) {
 /**
  * Process a field to extract authors.
  *
- * @param object $field The field object to process.
- * @param array $authors The array containing authors.
- * @return array The updated array of authors.
+ * @param object $field 
+ *   The field object to process.
+ * @param array $authors
+ *   The array containing authors.
+ *
+ * @return array 
+ *   The updated array of authors.
  */
-function process_field_for_authors($field, $authors) {
+function process_field_for_authors($field, array $authors) {
   if (!$field->isEmpty()) {
     $fields_data = $field->getValue();
 
