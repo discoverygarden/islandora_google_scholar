@@ -58,6 +58,8 @@ class AltmetricsBlock extends BlockBase implements ContainerFactoryPluginInterfa
    *   The entity type manager.
    * @param \Drupal\Core\Routing\RouteMatchInterface $route_match
    *   The route match object.
+   * @param \Drupal\path_alias\AliasManager $pathAliasManager
+   *   The path alias object.
    */
   public function __construct(array $configuration, $plugin_id, $plugin_definition, EntityTypeManagerInterface $entity_type_manager, RouteMatchInterface $route_match, AliasManagerInterface $pathAliasManager,) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
@@ -128,13 +130,10 @@ class AltmetricsBlock extends BlockBase implements ContainerFactoryPluginInterfa
    * {@inheritdoc}
    */
   public function build() {
-    // Get the current node.
-    $node = $this->routeMatch->getParameter('node');
-
     // Get the data value.
     $data = $this->getData();
 
-    if ($data === null) {
+    if ($data === NULL) {
       return [];
     }
 
@@ -142,7 +141,8 @@ class AltmetricsBlock extends BlockBase implements ContainerFactoryPluginInterfa
     $data_badge_type = $this->configuration['data_badge_type'] ?? 'donut';
     $data_badge_popover = $this->configuration['data_badge_popover'] ?? 'left';
 
-    // Build the block content based on the selected altmetrics option and data badge popover option.
+    // Build the block content based on the selected altmetrics
+    // option and data badge popover option.
     $content = [
       '#theme' => 'altmetrics_block',
       '#data_badge_type' => $data_badge_type,
@@ -180,7 +180,8 @@ class AltmetricsBlock extends BlockBase implements ContainerFactoryPluginInterfa
       elseif (!empty($node->get('field_isbn')) && !$node->get('field_isbn')->isEmpty()) {
         return "data-isbn=" . $node->get('field_isbn')->value;
       }
-      // If none of the above fields are available, generate data attribute from the node URL.
+      // If none of the above fields are available,
+      // generate data attribute from the node URL.
       else {
         $node_url = $this->pathAliasManager->getAliasByPath('/node/' . $node->id());
         return "data-uri=" . Url::fromUserInput($node_url)->setAbsolute()->toString();
@@ -216,7 +217,7 @@ class AltmetricsBlock extends BlockBase implements ContainerFactoryPluginInterfa
   public function getCacheTags() {
     // Get the current node ID.
     $node = $this->routeMatch->getParameter('node');
-    if ($node instanceof \Drupal\node\NodeInterface) {
+    if ($node instanceof NodeInterface) {
       $node_id = $node->id();
     }
 
