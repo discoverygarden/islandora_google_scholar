@@ -41,7 +41,7 @@ class AltmetricsBlock extends BlockBase implements ContainerFactoryPluginInterfa
   /**
    * Definition of path alias manager.
    *
-   * @var \Drupal\path_alias\AliasManager
+   * @var \Drupal\path_alias\AliasManagerInterface
    */
   protected $pathAliasManager;
 
@@ -58,7 +58,7 @@ class AltmetricsBlock extends BlockBase implements ContainerFactoryPluginInterfa
    *   The entity type manager.
    * @param \Drupal\Core\Routing\RouteMatchInterface $route_match
    *   The route match object.
-   * @param \Drupal\path_alias\AliasManager $pathAliasManager
+   * @param \Drupal\path_alias\AliasManagerInterface $pathAliasManager
    *   The path alias object.
    */
   public function __construct(array $configuration, $plugin_id, $plugin_definition, EntityTypeManagerInterface $entity_type_manager, RouteMatchInterface $route_match, AliasManagerInterface $pathAliasManager,) {
