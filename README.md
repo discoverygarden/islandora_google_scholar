@@ -53,6 +53,13 @@ The Islandora Google Scholar metatag group includes, at present, a checkbox
 allowing you to use the 'first attached PDF' to a node as the
 `citation_pdf_url` metatag.
 
+## Tokens
+
+Module provides below token to populate Google Scholar meta tags.
+  - GS Publication Date
+    - Taking controlled_access_terms_normalize_date_format for date formatting.
+  - GS Author
+
 ## Troubleshooting/Issues
 
 Having problems or solved a problem? Contact [discoverygarden](http://support.discoverygarden.ca).
