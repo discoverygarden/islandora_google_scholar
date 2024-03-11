@@ -84,6 +84,7 @@ function islandora_google_scholar_publication_date($node, $original) {
  *
  * @param object $node
  *   The node object containing the fields.
+ *
  * @return string
  *   The comma-separated list of unique authors.
  */
