@@ -1,0 +1,12 @@
+{#
+Template file for the altmetrics block.
+Available variables:
+  - data_badge_type: The type of badge (donut, medium-donut, large-donut).
+  - data_badge_popover: The position of the badge popover (left, right, top, bottom).
+#}
+<div
+  class="altmetric-embed"
+  data-badge-type="{{ data_badge_type }}"
+  data-badge-popover="{{ data_badge_popover }}"
+  {{ data }}>
+</div>
