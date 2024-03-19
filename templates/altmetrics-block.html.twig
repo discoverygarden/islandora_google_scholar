@@ -5,9 +5,11 @@ Available variables:
   - data_badge_popover: The position of the badge popover (left, right, top, bottom).
   - data: The value of the data attribute based on node fields.
 #}
-<div
-  class="altmetric-embed"
-  data-badge-type="{{ data_badge_type }}"
-  data-badge-popover="{{ data_badge_popover }}"
-  {{ data }}>
+<div class=altmetric-embed-wrapper">
+  <div
+    class="altmetric-embed"
+    data-badge-type="{{ data_badge_type }}"
+    data-badge-popover="{{ data_badge_popover }}"
+    {{ data }}>
+  </div>
 </div>
