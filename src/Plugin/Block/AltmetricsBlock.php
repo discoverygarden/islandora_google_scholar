@@ -176,6 +176,10 @@ class AltmetricsBlock extends BlockBase implements ContainerFactoryPluginInterfa
       elseif (!empty($node->get('field_handle')) && !$node->get('field_handle')->isEmpty()) {
         return "data-handle=" . $node->get('field_handle')->value;
       }
+      // Get the value of the 'field_pubmed_number' field.
+      elseif (!empty($node->get('field_pubmed_number')) && !$node->get('field_pubmed_number')->isEmpty()) {
+        return "data-pmid=" . $node->get('field_pubmed_number')->value;
+      }
       // Get the value of the 'field_isbn' field.
       elseif (!empty($node->get('field_isbn')) && !$node->get('field_isbn')->isEmpty()) {
         return "data-isbn=" . $node->get('field_isbn')->value;
