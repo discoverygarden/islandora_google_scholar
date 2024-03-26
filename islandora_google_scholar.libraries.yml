@@ -1,0 +1,7 @@
+altmetrics-js-library:
+  remote: 'https://d1bxh8uas1mnw7.cloudfront.net/assets'
+  js:
+    https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js: { type: external, minified: true }
+  license:
+    name: MIT
+    url: https://about.readthedocs.com/terms-of-service/

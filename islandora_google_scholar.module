@@ -16,3 +16,18 @@ function islandora_google_scholar_metatags_alter(array &$metatags, array &$conte
     $alter_service->alter($metatags, $context['entity']);
   }
 }
+
+/**
+ * Implements hook_theme().
+ */
+function islandora_google_scholar_theme() {
+  return [
+    'altmetrics_block' => [
+      'variables' => [
+        'data_badge_type' => [],
+        'data_badge_popover' => [],
+        'data' => [],
+      ],
+    ],
+  ];
+}
