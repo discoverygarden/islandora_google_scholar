@@ -192,7 +192,7 @@ class AltmetricsBlock extends BlockBase implements ContainerFactoryPluginInterfa
       }
     }
     else {
-      return '';
+      return NULL;
     }
   }
 
