@@ -154,7 +154,6 @@ class AltmetricsBlock extends BlockBase implements ContainerFactoryPluginInterfa
     $content['#attached']['library'][] = 'islandora_google_scholar/altmetrics-external-library';
     $content['#attached']['library'][] = 'islandora_google_scholar/altmetrics-custom-library';
 
-
     return $content;
   }
 
