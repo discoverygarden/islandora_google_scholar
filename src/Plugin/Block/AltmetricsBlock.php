@@ -151,7 +151,8 @@ class AltmetricsBlock extends BlockBase implements ContainerFactoryPluginInterfa
     ];
 
     // Attach altmetrics JS library.
-    $content['#attached']['library'][] = 'islandora_google_scholar/altmetrics-js-library';
+    $content['#attached']['library'][] = 'islandora_google_scholar/altmetrics-external-library';
+    $content['#attached']['library'][] = 'islandora_google_scholar/altmetrics-custom-library';
 
     return $content;
   }
@@ -192,7 +193,7 @@ class AltmetricsBlock extends BlockBase implements ContainerFactoryPluginInterfa
       }
     }
     else {
-      return '';
+      return NULL;
     }
   }
 
