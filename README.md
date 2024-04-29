@@ -1,8 +1,30 @@
-# islandora_google_scholar
+# Islandora Google Scholar
+
+![](https://github.com/discoverygarden/islandora_google_scholar/actions/workflows/lint.yml/badge.svg)
+![](https://github.com/discoverygarden/islandora_google_scholar/actions/workflows/semver.yml/badge.svg)
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
 ## Introduction
 
-Metatag additions and modifications for institutional repository content to provide Google Scholar metatags that are customized based on a node's research output 'type', as well as a 'first attached PDF' metatag as the PDF URL.
+Metatag additions and modifications for Institutional Repository content to provide Google Scholar metatags, as well as a 'first attached PDF' metatag as the PDF URL.
+
+## Table of Contents
+
+* [Features](#features)
+* [Requirements](#requirements)
+* [Installation](#installation)
+* [Configuration](#configuration)
+* [Usage](#usage)
+* [Troubleshooting/Issues](#troubleshootingissues)
+* [Maintainers and Sponsors](#maintainers-and-sponsors)
+* [Development/Contribution](#developmentcontribution)
+* [License](#license)
+
+## Features
+
+* Add the url of the first attached PDF as citation_pdf_url metatag.
+* Alter metatags based on the value of a referenced taxonomy term.
+* Provides an altmetrics block (Experimental feature. Still under active development.)
 
 ## Requirements
 
@@ -10,8 +32,7 @@ This module requires the following modules/libraries:
 
 * [Islandora](https://github.com/Islandora/islandora)
 * [Metatag](https://www.drupal.org/project/metatag)
-
-It is expected that [Metatag Google Scholar](https://www.drupal.org/project/metatag_google_scholar) will be installed in order to make use of the base citation-prefixed metatags, but it is not a strict requirement of the module.
+* [Metatag Google Scholar](https://www.drupal.org/project/metatag_google_scholar)
 
 ## Installation
 
@@ -19,10 +40,13 @@ Install as usual, see
 [this]( https://www.drupal.org/docs/extending-drupal/installing-modules) for
 further information.
 
+## Configuration
+
+* Instruction on configuring google scholar metatags can be found [here](https://docs.google.com/document/d/1xwo9W_8UYTLtsBJ_MNEKi7u9S3AKv-jQKgKqesKW88Y?usp=sharing)
+
 ## Usage
 
-Islandora Google Scholar provides two capabilities to display metatags for
-research output nodes based on the node's type:
+Islandora Google Scholar provides two capabilities to display metatags for research output nodes based on the node's type:
 
 ### Metatag Alterer
 
@@ -53,13 +77,6 @@ The Islandora Google Scholar metatag group includes, at present, a checkbox
 allowing you to use the 'first attached PDF' to a node as the
 `citation_pdf_url` metatag.
 
-## Tokens
-
-Module provides below token to populate Google Scholar meta tags.
-  - GS Publication Date
-    - Taking controlled_access_terms_normalize_date_format for date formatting.
-  - GS Author
-
 ## Troubleshooting/Issues
 
 Having problems or solved a problem? Contact [discoverygarden](http://support.discoverygarden.ca).
@@ -68,6 +85,7 @@ Having problems or solved a problem? Contact [discoverygarden](http://support.di
 
 This project has been sponsored by:
 
+* Atlanta University Center
 * [discoverygarden](http://wwww.discoverygarden.ca)
 
 ## Development
