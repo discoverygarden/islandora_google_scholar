@@ -42,7 +42,7 @@ further information.
 
 ## Configuration
 
-* Instruction on configuring google scholar metatags can be found [here](https://docs.google.com/document/d/1xwo9W_8UYTLtsBJ_MNEKi7u9S3AKv-jQKgKqesKW88Y?usp=sharing)
+* Instructions on configuring google scholar metatags can be found [here](https://docs.google.com/document/d/1xwo9W_8UYTLtsBJ_MNEKi7u9S3AKv-jQKgKqesKW88Y?usp=sharing)
 
 ## Usage
 
