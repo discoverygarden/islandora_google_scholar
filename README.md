@@ -86,6 +86,7 @@ Having problems or solved a problem? Contact [discoverygarden](http://support.di
 This project has been sponsored by:
 
 * Atlanta University Center
+* Boston College
 * [discoverygarden](http://wwww.discoverygarden.ca)
 
 ## Development
