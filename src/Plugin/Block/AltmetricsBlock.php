@@ -181,9 +181,9 @@ class AltmetricsBlock extends BlockBase implements ContainerFactoryPluginInterfa
 
         if (isset($url['scheme']) && ($url['scheme'] == 'http' || $url['scheme'] == 'https')) {
           $handle = $url['path'];
-            if (str_starts_with($handle, '/')) {
-              $handle = substr($handle, 1);
-            }
+          if (str_starts_with($handle, '/')) {
+            $handle = substr($handle, 1);
+          }
         }
 
         return "data-handle=" . $handle;
