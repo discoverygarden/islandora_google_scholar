@@ -175,7 +175,18 @@ class AltmetricsBlock extends BlockBase implements ContainerFactoryPluginInterfa
       }
       // Get the value of the 'field_handle' field.
       elseif (!empty($node->get('field_handle')) && !$node->get('field_handle')->isEmpty()) {
-        return "data-handle=" . $node->get('field_handle')->value;
+        // Altmetrics expects handle without the domain.
+        $handle = $node->get('field_handle')->value;
+        $url = parse_url($handle);
+
+        if (isset($url['scheme']) && ($url['scheme'] === 'http' || $url['scheme'] === 'https')) {
+          $handle = $url['path'];
+          if (str_starts_with($handle, '/')) {
+            $handle = substr($handle, 1);
+          }
+        }
+
+        return "data-handle=" . $handle;
       }
       // Get the value of the 'field_pubmed_number' field.
       elseif (!empty($node->get('field_pubmed_number')) && !$node->get('field_pubmed_number')->isEmpty()) {
